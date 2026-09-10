@@ -1,0 +1,12 @@
+schema: "classroom50/repo-config/v1"
+classroom: "ds212"
+assignment: "portfolio"
+owner:
+  username: "srogrady"
+  id: 196214853
+  accepted_at: "2026-09-10T01:22:58Z"
+source:
+  owner: "mac-ds212-f26"
+  owner_id: 323652586
+  repo: "portfolio-template"
+  branch: "main"
