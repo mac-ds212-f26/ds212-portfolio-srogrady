@@ -1,5 +1,5 @@
 ---
-title: "TidyTuesdayHW1"
+title: "TidyTuesday The Cappuccino Index - HW1"
 ---
 
 ```{r}
@@ -8,6 +8,8 @@ title: "TidyTuesdayHW1"
 ## install.packages("tidytuesdayR")
 
 library(tidytuesdayR)
+library(tidyverse)
+library(dplyr)
 
 tuesdata <- tidytuesdayR::tt_load('2026-09-08')
 ## OR
@@ -22,3 +24,17 @@ cafe <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidyt
 cappuccino_index <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')
 ```
 
+```{r}
+dim(cafe)
+```
+
+```{r}
+cappuccino_index|> 
+  arrange(desc(index))
+```
+
+```{r}
+cappuccino_index|> 
+  group_by(index_as_time)
+```
+> Australia, Italy, NZ, Switzerland. 
