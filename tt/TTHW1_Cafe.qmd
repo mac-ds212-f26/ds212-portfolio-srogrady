@@ -1,0 +1,24 @@
+---
+title: "TidyTuesdayHW1"
+---
+
+```{r}
+# Using R
+# Option 1: tidytuesdayR R package 
+## install.packages("tidytuesdayR")
+
+library(tidytuesdayR)
+
+tuesdata <- tidytuesdayR::tt_load('2026-09-08')
+## OR
+tuesdata <- tidytuesdayR::tt_load(2026, week = 36)
+
+cafe <- tuesdata$cafe
+cappuccino_index <- tuesdata$cappuccino_index
+
+# Option 2: Read directly from GitHub
+
+cafe <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv')
+cappuccino_index <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')
+```
+
