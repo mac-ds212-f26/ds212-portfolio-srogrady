@@ -45,12 +45,12 @@
   {
     "objectID": "tt/TTHW1_Cafe.html",
     "href": "tt/TTHW1_Cafe.html",
-    "title": "TidyTuesdayHW1",
+    "title": "TidyTuesday The Cappuccino Index - HW1",
     "section": "",
     "text": "Code# Using R\n# Option 1: tidytuesdayR R package \n## install.packages(\"tidytuesdayR\")\n\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\nlibrary(dplyr)\n\ntuesdata &lt;- tidytuesdayR::tt_load('2026-09-08')\n## OR\ntuesdata &lt;- tidytuesdayR::tt_load(2026, week = 36)\n\ncafe &lt;- tuesdata$cafe\ncappuccino_index &lt;- tuesdata$cappuccino_index\n\n# Option 2: Read directly from GitHub\n\ncafe &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv')\ncappuccino_index &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')\n\n\n\nCodedim(cafe)\n\n[1] 2594   10\n\n\n\nCodecappuccino_index|&gt; \n  arrange(desc(index))\n\n# A tibble: 87 × 6\n   country     index     n minutes seconds index_as_time\n   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        \n 1 Pakistan     277.     2     277       2 277:02       \n 2 Qatar        187.     1     186      59 186:59       \n 3 Djibouti     173.     1     172      45 172:45       \n 4 India        172.    11     172      10 172:10       \n 5 Vietnam      162.     6     162      25 162:25       \n 6 Sri Lanka    138.     1     137      35 137:35       \n 7 Nicaragua    124.     1     123      52 123:52       \n 8 Oman         119.     3     118      52 118:52       \n 9 Philippines  111.    11     110      34 110:34       \n10 Egypt        104.     1     104      24 104:24       \n# ℹ 77 more rows\n\n\n\nCodecappuccino_index|&gt; \n  group_by(index_as_time)\n\n# A tibble: 87 × 6\n# Groups:   index_as_time [87]\n   country     index     n minutes seconds index_as_time\n   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        \n 1 Australia    10.1   171      10       4 10:04        \n 2 Italy        11.9    15      11      51 11:51        \n 3 New Zealand  12.7    35      12      44 12:44        \n 4 Switzerland  14.4    18      14      24 14:24        \n 5 Netherlands  14.9    73      14      51 14:51        \n 6 Puerto Rico  14.9     1      14      53 14:53        \n 7 Slovenia     14.9     4      14      56 14:56        \n 8 Germany      15.0   167      14      58 14:58        \n 9 Norway       15.5    22      15      29 15:29        \n10 Belgium      15.8    19      15      45 15:45        \n# ℹ 77 more rows\n\n\n\nAustralia, Italy, NZ, Switzerland.",
     "crumbs": [
       "TidyTuesday",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>TidyTuesdayHW1</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>TidyTuesday The Cappuccino Index - HW1</span>"
     ]
   },
   {
