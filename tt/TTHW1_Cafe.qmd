@@ -2,6 +2,7 @@
 title: "TidyTuesday The Cappuccino Index - HW1"
 ---
 
+# Exploring the Data :
 ```{r}
 # Using R
 # Option 1: tidytuesdayR R package 
@@ -26,15 +27,117 @@ cappuccino_index <- readr::read_csv('https://raw.githubusercontent.com/rfordatas
 
 ```{r}
 dim(cafe)
+dim(cappuccino_index)
 ```
 
 ```{r}
 cappuccino_index|> 
   arrange(desc(index))
+
+cafe |> 
+  arrange(desc(hourly_wage))
+```
+
+
+# Research Question 
+> **How does cappuccino affordability vary between urban, suburban, and rural cafes?**
+
+
+```{r}
+cafe |>
+  filter(urban == TRUE)|> 
+  select(country,city,urban,suburban,rural,price,hourly_wage)
+```
+```{r}
+cafe |>
+  filter(suburban == TRUE)|> 
+  select(country,city,urban,suburban,rural,price,hourly_wage)
 ```
 
 ```{r}
-cappuccino_index|> 
-  group_by(index_as_time)
+cafe |>
+  filter(rural == TRUE)|> 
+  select(country,city,urban,suburban,rural,price,hourly_wage)
 ```
-> Australia, Italy, NZ, Switzerland. 
+
+> I want to be able to compare the three groups, so I will mutate to be able to graphically compare later on. 
+
+```{r}
+cafe <- cafe |>
+  mutate(location = case_when(
+    urban == TRUE ~ "Urban",
+    suburban == TRUE ~ "Suburban",
+    rural == TRUE ~ "Rural"
+  ))
+```
+
+> Now we have the columan "Location" that says which location that cafe is in. 
+
+```{r}
+ggplot(cafe, aes(x = location, y = price_gbp)) +
+  geom_boxplot() +
+  labs(title = "Cappuccino Prices Are Similar Across Cafe Locations",x = "Cafe Location",y = "Cappuccino Price (British pounds)",caption = "Source: TidyTuesday Cappuccino Index data, 2026"
+  )
+```
+> This visualization compares cappuccino prices across urban, suburban, and rural cafés. The median price is fairly similar across all three locations.(This price being a converted price of a small cappuccino from that cafe, converted to British pounds). All categories have a handful of outliers below that median price and above it, but Urban has the highest priced outliers. Overall, Urban and Suburban have slightly larger spreads; as in more varieties of prices charged; but they are all fairly similar.
+
+> Answers: How much do prices vary?
+
+```{r}
+cafe_2 <- cafe |>
+  group_by(location) |>
+  summarize(mean_price_gbp = mean(price_gbp))
+```
+
+```{r}
+ggplot(cafe_2, aes(x = location, y = mean_price_gbp)) +
+  geom_col() +
+  labs(title = "Average Cappuccino Price by Cafe Location", x = "Cafe Location",y = "Average Cappuccino Price (British Pounds)",caption = "Source: TidyTuesday Cappuccino Index data, 2026"
+  )
+```
+
+> Again, similar prices across all location types. Now, let's look at wages (specially wage_gbp which is the hourly wage of a barista working in the cafe, converted to British pounds.)
+
+> Answers : What's the average price for each location?
+
+
+```{r}
+cafe_3 <- cafe |>
+  group_by(location) |>
+  summarize(mean_hourly_wage_gbp = mean(hourly_wage_gbp))
+```
+
+```{r}
+ggplot(cafe_3, aes(x = location, y = mean_hourly_wage_gbp)) +
+  geom_col() + labs( title = "Average Barista Wages Vary by Cafe Location", x = "Cafe Location", y = "Average Hourly Wage (British Pounds)",caption = "Source: TidyTuesday Cappuccino Index data, 2026"
+  )
+```
+
+> Average barista wages are fairly similar across all three cafe locations. Suburban cafes have the highest average hourly wage at about 12.2, followed by rural cafes at about 11.9. Urban cafes have the lowest average wage at about 11.0. Overall, the differences are relatively small, suggesting that cafe location is not heavily associated with a large difference in average barista wages.
+
+> Answers : How do barista wages compare across those locations?
+
+
+```{r}
+cafe_4 <- cafe |>
+  mutate(cap_index = (price_gbp / hourly_wage_gbp) * 60)
+```
+
+> Created my own "Cappuccino Index" using cafe data to stay within that dataset for clarity, but it's to see how long a barista would have to work at their cafe to afford a cappuccino there. 
+
+> Let's visualize one last time. 
+
+```{r}
+ggplot(cafe_4, aes(x = location, y = cap_index)) +
+  geom_boxplot() +
+  labs(title = "Cappuccino Affordability by Cafe Location", x = "Cafe Location", y = "Minutes of Work to Afford a Cappuccino", caption = "Source: TidyTuesday Cappuccino Index data, 2026")+ 
+         theme(axis.title.y = element_text(size = 8))
+```
+
+> Cappuccino affordability varies more across urban cafes than suburban or rural cafes. While most cafes require a relatively small amount of work to afford a cappuccino, urban cafes have much more variation and several extreme values. Rural cafes show the least variation overall.
+
+
+# Final Summary/Answer 
+
+> Overall, cappuccino affordability is fairly similar for most cafes across locations, but urban cafes show much greater variation and have the highest outliers.
+
