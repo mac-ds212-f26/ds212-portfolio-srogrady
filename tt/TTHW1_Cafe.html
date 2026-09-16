@@ -433,17 +433,23 @@ cookieconsent.run({
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link active" data-scroll-target="#exploring-the-data">Exploring the Data :</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question</a></li>
+  <li><a href="#final-summaryanswer" id="toc-final-summaryanswer" class="nav-link" data-scroll-target="#final-summaryanswer">Final Summary/Answer</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tt/2025-07-08.html">TidyTuesday</a></li><li class="breadcrumb-item"><a href="../tt/TTHW1_Cafe.html"><span class="chapter-title">TidyTuesday The Cappuccino Index - HW1</span></a></li></ol></nav><div class="quarto-title">
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tt/2025-07-08.html">TidyTuesday</a></li><li class="breadcrumb-item"><a href="../tt/TTHW1_Cafe.html"><span class="chapter-title">TidyTuesday The Cappuccino Index - HW1</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">TidyTuesday The Cappuccino Index - HW1</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -452,7 +458,8 @@ cookieconsent.run({
   
 
 
-</header><div class="cell">
+</header><section id="exploring-the-data" class="level1"><h1>Exploring the Data :</h1>
+<div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Using R</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co"># Option 1: tidytuesdayR R package </span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="do">## install.packages("tidytuesdayR")</span></span>
@@ -479,10 +486,14 @@ cookieconsent.run({
 </details><div class="cell-output cell-output-stdout">
 <pre><code>[1] 2594   10</code></pre>
 </div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">dim</span>(cappuccino_index)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>[1] 87  6</code></pre>
+</div>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>cappuccino_index<span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(index))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>cappuccino_index<span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(index))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 6
    country     index     n minutes seconds index_as_time
@@ -499,37 +510,208 @@ cookieconsent.run({
 10 Egypt        104.     1     104      24 104:24       
 # ℹ 77 more rows</code></pre>
 </div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>cafe <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(hourly_wage))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,594 × 10
+   country   city             urban suburban rural hourly_wage_gbp price_gbp
+   &lt;chr&gt;     &lt;chr&gt;            &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt;           &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Indonesia Jakarta          TRUE  FALSE    FALSE            2.92      0.83
+ 2 Vietnam   Ho Chi Minh city TRUE  FALSE    FALSE            0.91      2.55
+ 3 Vietnam   Hanoi            TRUE  FALSE    FALSE            0.68      1.84
+ 4 Vietnam   Hanoi            TRUE  FALSE    FALSE            0.65      1.7 
+ 5 Vietnam   Hanoi            TRUE  FALSE    FALSE            0.65      1.56
+ 6 Indonesia Bandung          TRUE  FALSE    FALSE            0.88      1.04
+ 7 Indonesia Bali             TRUE  FALSE    FALSE            0.83      1.88
+ 8 Vietnam   Hanoi            TRUE  FALSE    FALSE            0.57      1.7 
+ 9 Vietnam   Hanoi            TRUE  FALSE    FALSE            0.57      1.56
+10 Indonesia Makassar         TRUE  FALSE    FALSE            0.75      1.33
+# ℹ 2,584 more rows
+# ℹ 3 more variables: original_currency &lt;chr&gt;, price &lt;dbl&gt;, hourly_wage &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section><section id="research-question" class="level1"><h1>Research Question</h1>
+<blockquote class="blockquote">
+<p><strong>How does cappuccino affordability vary between urban, suburban, and rural cafes?</strong></p>
+</blockquote>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">filter</span>(urban <span class="sc">==</span> <span class="cn">TRUE</span>)<span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">select</span>(country,city,urban,suburban,rural,price,hourly_wage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,854 × 7
+   country      city       urban suburban rural price hourly_wage
+   &lt;chr&gt;        &lt;chr&gt;      &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Denmark      Copenhagen TRUE  FALSE    FALSE  90         140  
+ 2 China        Shenzhen   TRUE  FALSE    FALSE  86          30  
+ 3 Denmark      Copenhagen TRUE  FALSE    FALSE  65         140  
+ 4 Singapore    Singapore  TRUE  FALSE    FALSE  11.9        19.3
+ 5 France       Paris      TRUE  FALSE    FALSE   8          15  
+ 6 Saudi Arabia Jeddah     TRUE  FALSE    FALSE  32          21  
+ 7 Denmark      Copenhagen TRUE  FALSE    FALSE  55         190. 
+ 8 Denmark      Copenhagen TRUE  FALSE    FALSE  54         140  
+ 9 Switzerland  Geneva     TRUE  FALSE    FALSE   6.5        27  
+10 Switzerland  Geneva     TRUE  FALSE    FALSE   6.5        24.6
+# ℹ 1,844 more rows</code></pre>
+</div>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>cappuccino_index<span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">group_by</span>(index_as_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">filter</span>(suburban <span class="sc">==</span> <span class="cn">TRUE</span>)<span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">select</span>(country,city,urban,suburban,rural,price,hourly_wage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 87 × 6
-# Groups:   index_as_time [87]
-   country     index     n minutes seconds index_as_time
-   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        
- 1 Australia    10.1   171      10       4 10:04        
- 2 Italy        11.9    15      11      51 11:51        
- 3 New&nbsp;Zealand  12.7    35      12      44 12:44        
- 4 Switzerland  14.4    18      14      24 14:24        
- 5 Netherlands  14.9    73      14      51 14:51        
- 6 Puerto Rico  14.9     1      14      53 14:53        
- 7 Slovenia     14.9     4      14      56 14:56        
- 8 Germany      15.0   167      14      58 14:58        
- 9 Norway       15.5    22      15      29 15:29        
-10 Belgium      15.8    19      15      45 15:45        
-# ℹ 77 more rows</code></pre>
+<pre><code># A tibble: 645 × 7
+   country     city          urban suburban rural price hourly_wage
+   &lt;chr&gt;       &lt;chr&gt;         &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+ 1 USA         West Richland FALSE TRUE     FALSE 12           17.9
+ 2 Switzerland Bern          FALSE TRUE     FALSE  6.8         23  
+ 3 USA         Holland       FALSE TRUE     FALSE  8           13.1
+ 4 UK          Montclair     FALSE TRUE     FALSE  5.8         15  
+ 5 Denmark     Copenhagen    FALSE TRUE     FALSE 49          218  
+ 6 Denmark     Vedbæk        FALSE TRUE     FALSE 48          155  
+ 7 USA         &lt;NA&gt;          FALSE TRUE     FALSE  7.33        16  
+ 8 Denmark     Svendborg     FALSE TRUE     FALSE 45          130  
+ 9 Denmark     Copenhagen    FALSE TRUE     FALSE 45          150  
+10 Switzerland Aarau         TRUE  TRUE     FALSE  5.5         25  
+# ℹ 635 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>(rural <span class="sc">==</span> <span class="cn">TRUE</span>)<span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">select</span>(country,city,urban,suburban,rural,price,hourly_wage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 160 × 7
+   country     city          urban suburban rural price hourly_wage
+   &lt;chr&gt;       &lt;chr&gt;         &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Switzerland St. Moritz    FALSE FALSE    TRUE    9          26.7
+ 2 USA         Catskill, NY  FALSE FALSE    TRUE    7          27  
+ 3 UAE         Umm al quwain FALSE FALSE    TRUE   25          15  
+ 4 USA         &lt;NA&gt;          FALSE FALSE    TRUE    6.5        22  
+ 5 UK          &lt;NA&gt;          FALSE FALSE    TRUE    4.8        14  
+ 6 UK          Near York     FALSE FALSE    TRUE    4.5        13.5
+ 7 UK          &lt;NA&gt;          FALSE FALSE    TRUE    4.5        12.2
+ 8 UK          &lt;NA&gt;          FALSE FALSE    TRUE    4.5        13.8
+ 9 USA         Houghton      FALSE FALSE    TRUE    6          16.8
+10 USA         Houghton, MI  FALSE FALSE    TRUE    6          16.2
+# ℹ 150 more rows</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Australia, Italy, NZ, Switzerland.</p>
+<p>I want to be able to compare the three groups, so I will mutate to be able to graphically compare later on.</p>
+</blockquote>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>cafe <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">mutate</span>(<span class="at">location =</span> <span class="fu">case_when</span>(</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    urban <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Urban"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>    suburban <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Suburban"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    rural <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Rural"</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  ))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Now we have the columan “Location” that says which location that cafe is in.</p>
+</blockquote>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ggplot</span>(cafe, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> price_gbp)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cappuccino Prices Are Similar Across Cafe Locations"</span>,<span class="at">x =</span> <span class="st">"Cafe Location"</span>,<span class="at">y =</span> <span class="st">"Cappuccino Price (British pounds)"</span>,<span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="TTHW1_Cafe_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>This visualization compares cappuccino prices across urban, suburban, and rural cafés. The median price is fairly similar across all three locations.(This price being a converted price of a small cappuccino from that cafe, converted to British pounds). All categories have a handful of outliers below that median price and above it, but Urban has the highest priced outliers. Overall, Urban and Suburban have slightly larger spreads; as in more varieties of prices charged; but they are all fairly similar.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Answers: How much do prices vary?</p>
+</blockquote>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>cafe_2 <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_price_gbp =</span> <span class="fu">mean</span>(price_gbp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ggplot</span>(cafe_2, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> mean_price_gbp)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Cappuccino Price by Cafe Location"</span>, <span class="at">x =</span> <span class="st">"Cafe Location"</span>,<span class="at">y =</span> <span class="st">"Average Cappuccino Price (British Pounds)"</span>,<span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="TTHW1_Cafe_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Again, similar prices across all location types. Now, let’s look at wages (specially wage_gbp which is the hourly wage of a barista working in the cafe, converted to British pounds.)</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Answers : What’s the average price for each location?</p>
+</blockquote>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>cafe_3 <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_hourly_wage_gbp =</span> <span class="fu">mean</span>(hourly_wage_gbp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">ggplot</span>(cafe_3, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> mean_hourly_wage_gbp)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">labs</span>( <span class="at">title =</span> <span class="st">"Average Barista Wages Vary by Cafe Location"</span>, <span class="at">x =</span> <span class="st">"Cafe Location"</span>, <span class="at">y =</span> <span class="st">"Average Hourly Wage (British Pounds)"</span>,<span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="TTHW1_Cafe_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Average barista wages are fairly similar across all three cafe locations. Suburban cafes have the highest average hourly wage at about 12.2, followed by rural cafes at about 11.9. Urban cafes have the lowest average wage at about 11.0. Overall, the differences are relatively small, suggesting that cafe location is not heavily associated with a large difference in average barista wages.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Answers : How do barista wages compare across those locations?</p>
+</blockquote>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>cafe_4 <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">mutate</span>(<span class="at">cap_index =</span> (price_gbp <span class="sc">/</span> hourly_wage_gbp) <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Created my own “Cappuccino Index” using cafe data to stay within that dataset for clarity, but it’s to see how long a barista would have to work at their cafe to afford a cappuccino there.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Let’s visualize one last time.</p>
+</blockquote>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(cafe_4, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> cap_index)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cappuccino Affordability by Cafe Location"</span>, <span class="at">x =</span> <span class="st">"Cafe Location"</span>, <span class="at">y =</span> <span class="st">"Minutes of Work to Afford a Cappuccino"</span>, <span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span>)<span class="sc">+</span> </span>
+<span id="cb23-4"><a href="#cb23-4"></a>         <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="TTHW1_Cafe_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Cappuccino affordability varies more across urban cafes than suburban or rural cafes. While most cafes require a relatively small amount of work to afford a cappuccino, urban cafes have much more variation and several extreme values. Rural cafes show the least variation overall.</p>
+</blockquote>
+</section><section id="final-summaryanswer" class="level1"><h1>Final Summary/Answer</h1>
+<blockquote class="blockquote">
+<p>Overall, cappuccino affordability is fairly similar for most cafes across locations, but urban cafes show much greater variation and have the highest outliers.</p>
 </blockquote>
 
 
 <!-- -->
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -997,7 +1179,7 @@ cookieconsent.run({
       }
     }
   });
-  </script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
       <a href="../tt/2025-07-15.html" class="pagination-link" aria-label="TidyTuesday Sample 2">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">TidyTuesday Sample 2</span></span>
       </a>          
@@ -1008,46 +1190,148 @@ cookieconsent.run({
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">---</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="an">title:</span><span class="co"> "TidyTuesday The Cappuccino Index - HW1"</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">---</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="in">```{r}</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co"># Using R</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># Option 1: tidytuesdayR R package </span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="do">## install.packages("tidytuesdayR")</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="fu">library</span>(tidytuesdayR)</span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb8-15"><a href="#cb8-15"></a></span>
-<span id="cb8-16"><a href="#cb8-16"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2026-09-08'</span>)</span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="do">## OR</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="dv">2026</span>, <span class="at">week =</span> <span class="dv">36</span>)</span>
-<span id="cb8-19"><a href="#cb8-19"></a></span>
-<span id="cb8-20"><a href="#cb8-20"></a>cafe <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>cafe</span>
-<span id="cb8-21"><a href="#cb8-21"></a>cappuccino_index <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>cappuccino_index</span>
-<span id="cb8-22"><a href="#cb8-22"></a></span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="co"># Option 2: Read directly from GitHub</span></span>
-<span id="cb8-24"><a href="#cb8-24"></a></span>
-<span id="cb8-25"><a href="#cb8-25"></a>cafe <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv'</span>)</span>
-<span id="cb8-26"><a href="#cb8-26"></a>cappuccino_index <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv'</span>)</span>
-<span id="cb8-27"><a href="#cb8-27"></a><span class="in">```</span></span>
-<span id="cb8-28"><a href="#cb8-28"></a></span>
-<span id="cb8-31"><a href="#cb8-31"></a><span class="in">```{r}</span></span>
-<span id="cb8-32"><a href="#cb8-32"></a><span class="fu">dim</span>(cafe)</span>
-<span id="cb8-33"><a href="#cb8-33"></a><span class="in">```</span></span>
-<span id="cb8-34"><a href="#cb8-34"></a></span>
-<span id="cb8-37"><a href="#cb8-37"></a><span class="in">```{r}</span></span>
-<span id="cb8-38"><a href="#cb8-38"></a>cappuccino_index<span class="sc">|&gt;</span> </span>
-<span id="cb8-39"><a href="#cb8-39"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(index))</span>
-<span id="cb8-40"><a href="#cb8-40"></a><span class="in">```</span></span>
-<span id="cb8-41"><a href="#cb8-41"></a></span>
-<span id="cb8-44"><a href="#cb8-44"></a><span class="in">```{r}</span></span>
-<span id="cb8-45"><a href="#cb8-45"></a>cappuccino_index<span class="sc">|&gt;</span> </span>
-<span id="cb8-46"><a href="#cb8-46"></a>  <span class="fu">group_by</span>(index_as_time)</span>
-<span id="cb8-47"><a href="#cb8-47"></a><span class="in">```</span></span>
-<span id="cb8-48"><a href="#cb8-48"></a><span class="at">&gt; Australia, Italy, NZ, Switzerland. </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1"></a><span class="co">---</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="an">title:</span><span class="co"> "TidyTuesday The Cappuccino Index - HW1"</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="co">---</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="fu"># Exploring the Data :</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="in">```{r}</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="co"># Using R</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="co"># Option 1: tidytuesdayR R package </span></span>
+<span id="cb24-11"><a href="#cb24-11"></a><span class="do">## install.packages("tidytuesdayR")</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a></span>
+<span id="cb24-13"><a href="#cb24-13"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb24-14"><a href="#cb24-14"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb24-16"><a href="#cb24-16"></a></span>
+<span id="cb24-17"><a href="#cb24-17"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2026-09-08'</span>)</span>
+<span id="cb24-18"><a href="#cb24-18"></a><span class="do">## OR</span></span>
+<span id="cb24-19"><a href="#cb24-19"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="dv">2026</span>, <span class="at">week =</span> <span class="dv">36</span>)</span>
+<span id="cb24-20"><a href="#cb24-20"></a></span>
+<span id="cb24-21"><a href="#cb24-21"></a>cafe <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>cafe</span>
+<span id="cb24-22"><a href="#cb24-22"></a>cappuccino_index <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>cappuccino_index</span>
+<span id="cb24-23"><a href="#cb24-23"></a></span>
+<span id="cb24-24"><a href="#cb24-24"></a><span class="co"># Option 2: Read directly from GitHub</span></span>
+<span id="cb24-25"><a href="#cb24-25"></a></span>
+<span id="cb24-26"><a href="#cb24-26"></a>cafe <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv'</span>)</span>
+<span id="cb24-27"><a href="#cb24-27"></a>cappuccino_index <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv'</span>)</span>
+<span id="cb24-28"><a href="#cb24-28"></a><span class="in">```</span></span>
+<span id="cb24-29"><a href="#cb24-29"></a></span>
+<span id="cb24-32"><a href="#cb24-32"></a><span class="in">```{r}</span></span>
+<span id="cb24-33"><a href="#cb24-33"></a><span class="fu">dim</span>(cafe)</span>
+<span id="cb24-34"><a href="#cb24-34"></a><span class="fu">dim</span>(cappuccino_index)</span>
+<span id="cb24-35"><a href="#cb24-35"></a><span class="in">```</span></span>
+<span id="cb24-36"><a href="#cb24-36"></a></span>
+<span id="cb24-39"><a href="#cb24-39"></a><span class="in">```{r}</span></span>
+<span id="cb24-40"><a href="#cb24-40"></a>cappuccino_index<span class="sc">|&gt;</span> </span>
+<span id="cb24-41"><a href="#cb24-41"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(index))</span>
+<span id="cb24-42"><a href="#cb24-42"></a></span>
+<span id="cb24-43"><a href="#cb24-43"></a>cafe <span class="sc">|&gt;</span> </span>
+<span id="cb24-44"><a href="#cb24-44"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(hourly_wage))</span>
+<span id="cb24-45"><a href="#cb24-45"></a><span class="in">```</span></span>
+<span id="cb24-46"><a href="#cb24-46"></a></span>
+<span id="cb24-47"><a href="#cb24-47"></a></span>
+<span id="cb24-48"><a href="#cb24-48"></a><span class="fu"># Research Question </span></span>
+<span id="cb24-49"><a href="#cb24-49"></a><span class="at">&gt; **How does cappuccino affordability vary between urban, suburban, and rural cafes?**</span></span>
+<span id="cb24-50"><a href="#cb24-50"></a></span>
+<span id="cb24-51"><a href="#cb24-51"></a></span>
+<span id="cb24-54"><a href="#cb24-54"></a><span class="in">```{r}</span></span>
+<span id="cb24-55"><a href="#cb24-55"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="cb24-56"><a href="#cb24-56"></a>  <span class="fu">filter</span>(urban <span class="sc">==</span> <span class="cn">TRUE</span>)<span class="sc">|&gt;</span> </span>
+<span id="cb24-57"><a href="#cb24-57"></a>  <span class="fu">select</span>(country,city,urban,suburban,rural,price,hourly_wage)</span>
+<span id="cb24-58"><a href="#cb24-58"></a><span class="in">```</span></span>
+<span id="cb24-61"><a href="#cb24-61"></a><span class="in">```{r}</span></span>
+<span id="cb24-62"><a href="#cb24-62"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="cb24-63"><a href="#cb24-63"></a>  <span class="fu">filter</span>(suburban <span class="sc">==</span> <span class="cn">TRUE</span>)<span class="sc">|&gt;</span> </span>
+<span id="cb24-64"><a href="#cb24-64"></a>  <span class="fu">select</span>(country,city,urban,suburban,rural,price,hourly_wage)</span>
+<span id="cb24-65"><a href="#cb24-65"></a><span class="in">```</span></span>
+<span id="cb24-66"><a href="#cb24-66"></a></span>
+<span id="cb24-69"><a href="#cb24-69"></a><span class="in">```{r}</span></span>
+<span id="cb24-70"><a href="#cb24-70"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="cb24-71"><a href="#cb24-71"></a>  <span class="fu">filter</span>(rural <span class="sc">==</span> <span class="cn">TRUE</span>)<span class="sc">|&gt;</span> </span>
+<span id="cb24-72"><a href="#cb24-72"></a>  <span class="fu">select</span>(country,city,urban,suburban,rural,price,hourly_wage)</span>
+<span id="cb24-73"><a href="#cb24-73"></a><span class="in">```</span></span>
+<span id="cb24-74"><a href="#cb24-74"></a></span>
+<span id="cb24-75"><a href="#cb24-75"></a><span class="at">&gt; I want to be able to compare the three groups, so I will mutate to be able to graphically compare later on. </span></span>
+<span id="cb24-76"><a href="#cb24-76"></a></span>
+<span id="cb24-79"><a href="#cb24-79"></a><span class="in">```{r}</span></span>
+<span id="cb24-80"><a href="#cb24-80"></a>cafe <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb24-81"><a href="#cb24-81"></a>  <span class="fu">mutate</span>(<span class="at">location =</span> <span class="fu">case_when</span>(</span>
+<span id="cb24-82"><a href="#cb24-82"></a>    urban <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Urban"</span>,</span>
+<span id="cb24-83"><a href="#cb24-83"></a>    suburban <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Suburban"</span>,</span>
+<span id="cb24-84"><a href="#cb24-84"></a>    rural <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Rural"</span></span>
+<span id="cb24-85"><a href="#cb24-85"></a>  ))</span>
+<span id="cb24-86"><a href="#cb24-86"></a><span class="in">```</span></span>
+<span id="cb24-87"><a href="#cb24-87"></a></span>
+<span id="cb24-88"><a href="#cb24-88"></a><span class="at">&gt; Now we have the columan "Location" that says which location that cafe is in. </span></span>
+<span id="cb24-89"><a href="#cb24-89"></a></span>
+<span id="cb24-92"><a href="#cb24-92"></a><span class="in">```{r}</span></span>
+<span id="cb24-93"><a href="#cb24-93"></a><span class="fu">ggplot</span>(cafe, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> price_gbp)) <span class="sc">+</span></span>
+<span id="cb24-94"><a href="#cb24-94"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb24-95"><a href="#cb24-95"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cappuccino Prices Are Similar Across Cafe Locations"</span>,<span class="at">x =</span> <span class="st">"Cafe Location"</span>,<span class="at">y =</span> <span class="st">"Cappuccino Price (British pounds)"</span>,<span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span></span>
+<span id="cb24-96"><a href="#cb24-96"></a>  )</span>
+<span id="cb24-97"><a href="#cb24-97"></a><span class="in">```</span></span>
+<span id="cb24-98"><a href="#cb24-98"></a><span class="at">&gt; This visualization compares cappuccino prices across urban, suburban, and rural cafés. The median price is fairly similar across all three locations.(This price being a converted price of a small cappuccino from that cafe, converted to British pounds). All categories have a handful of outliers below that median price and above it, but Urban has the highest priced outliers. Overall, Urban and Suburban have slightly larger spreads; as in more varieties of prices charged; but they are all fairly similar.</span></span>
+<span id="cb24-99"><a href="#cb24-99"></a></span>
+<span id="cb24-100"><a href="#cb24-100"></a><span class="at">&gt; Answers: How much do prices vary?</span></span>
+<span id="cb24-101"><a href="#cb24-101"></a></span>
+<span id="cb24-104"><a href="#cb24-104"></a><span class="in">```{r}</span></span>
+<span id="cb24-105"><a href="#cb24-105"></a>cafe_2 <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb24-106"><a href="#cb24-106"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
+<span id="cb24-107"><a href="#cb24-107"></a>  <span class="fu">summarize</span>(<span class="at">mean_price_gbp =</span> <span class="fu">mean</span>(price_gbp))</span>
+<span id="cb24-108"><a href="#cb24-108"></a><span class="in">```</span></span>
+<span id="cb24-109"><a href="#cb24-109"></a></span>
+<span id="cb24-112"><a href="#cb24-112"></a><span class="in">```{r}</span></span>
+<span id="cb24-113"><a href="#cb24-113"></a><span class="fu">ggplot</span>(cafe_2, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> mean_price_gbp)) <span class="sc">+</span></span>
+<span id="cb24-114"><a href="#cb24-114"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb24-115"><a href="#cb24-115"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Cappuccino Price by Cafe Location"</span>, <span class="at">x =</span> <span class="st">"Cafe Location"</span>,<span class="at">y =</span> <span class="st">"Average Cappuccino Price (British Pounds)"</span>,<span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span></span>
+<span id="cb24-116"><a href="#cb24-116"></a>  )</span>
+<span id="cb24-117"><a href="#cb24-117"></a><span class="in">```</span></span>
+<span id="cb24-118"><a href="#cb24-118"></a></span>
+<span id="cb24-119"><a href="#cb24-119"></a><span class="at">&gt; Again, similar prices across all location types. Now, let's look at wages (specially wage_gbp which is the hourly wage of a barista working in the cafe, converted to British pounds.)</span></span>
+<span id="cb24-120"><a href="#cb24-120"></a></span>
+<span id="cb24-121"><a href="#cb24-121"></a><span class="at">&gt; Answers : What's the average price for each location?</span></span>
+<span id="cb24-122"><a href="#cb24-122"></a></span>
+<span id="cb24-123"><a href="#cb24-123"></a></span>
+<span id="cb24-126"><a href="#cb24-126"></a><span class="in">```{r}</span></span>
+<span id="cb24-127"><a href="#cb24-127"></a>cafe_3 <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb24-128"><a href="#cb24-128"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
+<span id="cb24-129"><a href="#cb24-129"></a>  <span class="fu">summarize</span>(<span class="at">mean_hourly_wage_gbp =</span> <span class="fu">mean</span>(hourly_wage_gbp))</span>
+<span id="cb24-130"><a href="#cb24-130"></a><span class="in">```</span></span>
+<span id="cb24-131"><a href="#cb24-131"></a></span>
+<span id="cb24-134"><a href="#cb24-134"></a><span class="in">```{r}</span></span>
+<span id="cb24-135"><a href="#cb24-135"></a><span class="fu">ggplot</span>(cafe_3, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> mean_hourly_wage_gbp)) <span class="sc">+</span></span>
+<span id="cb24-136"><a href="#cb24-136"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">labs</span>( <span class="at">title =</span> <span class="st">"Average Barista Wages Vary by Cafe Location"</span>, <span class="at">x =</span> <span class="st">"Cafe Location"</span>, <span class="at">y =</span> <span class="st">"Average Hourly Wage (British Pounds)"</span>,<span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span></span>
+<span id="cb24-137"><a href="#cb24-137"></a>  )</span>
+<span id="cb24-138"><a href="#cb24-138"></a><span class="in">```</span></span>
+<span id="cb24-139"><a href="#cb24-139"></a></span>
+<span id="cb24-140"><a href="#cb24-140"></a><span class="at">&gt; Average barista wages are fairly similar across all three cafe locations. Suburban cafes have the highest average hourly wage at about 12.2, followed by rural cafes at about 11.9. Urban cafes have the lowest average wage at about 11.0. Overall, the differences are relatively small, suggesting that cafe location is not heavily associated with a large difference in average barista wages.</span></span>
+<span id="cb24-141"><a href="#cb24-141"></a></span>
+<span id="cb24-142"><a href="#cb24-142"></a><span class="at">&gt; Answers : How do barista wages compare across those locations?</span></span>
+<span id="cb24-143"><a href="#cb24-143"></a></span>
+<span id="cb24-144"><a href="#cb24-144"></a></span>
+<span id="cb24-147"><a href="#cb24-147"></a><span class="in">```{r}</span></span>
+<span id="cb24-148"><a href="#cb24-148"></a>cafe_4 <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb24-149"><a href="#cb24-149"></a>  <span class="fu">mutate</span>(<span class="at">cap_index =</span> (price_gbp <span class="sc">/</span> hourly_wage_gbp) <span class="sc">*</span> <span class="dv">60</span>)</span>
+<span id="cb24-150"><a href="#cb24-150"></a><span class="in">```</span></span>
+<span id="cb24-151"><a href="#cb24-151"></a></span>
+<span id="cb24-152"><a href="#cb24-152"></a><span class="at">&gt; Created my own "Cappuccino Index" using cafe data to stay within that dataset for clarity, but it's to see how long a barista would have to work at their cafe to afford a cappuccino there. </span></span>
+<span id="cb24-153"><a href="#cb24-153"></a></span>
+<span id="cb24-154"><a href="#cb24-154"></a><span class="at">&gt; Let's visualize one last time. </span></span>
+<span id="cb24-155"><a href="#cb24-155"></a></span>
+<span id="cb24-158"><a href="#cb24-158"></a><span class="in">```{r}</span></span>
+<span id="cb24-159"><a href="#cb24-159"></a><span class="fu">ggplot</span>(cafe_4, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> cap_index)) <span class="sc">+</span></span>
+<span id="cb24-160"><a href="#cb24-160"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb24-161"><a href="#cb24-161"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cappuccino Affordability by Cafe Location"</span>, <span class="at">x =</span> <span class="st">"Cafe Location"</span>, <span class="at">y =</span> <span class="st">"Minutes of Work to Afford a Cappuccino"</span>, <span class="at">caption =</span> <span class="st">"Source: TidyTuesday Cappuccino Index data, 2026"</span>)<span class="sc">+</span> </span>
+<span id="cb24-162"><a href="#cb24-162"></a>         <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>))</span>
+<span id="cb24-163"><a href="#cb24-163"></a><span class="in">```</span></span>
+<span id="cb24-164"><a href="#cb24-164"></a></span>
+<span id="cb24-165"><a href="#cb24-165"></a><span class="at">&gt; Cappuccino affordability varies more across urban cafes than suburban or rural cafes. While most cafes require a relatively small amount of work to afford a cappuccino, urban cafes have much more variation and several extreme values. Rural cafes show the least variation overall.</span></span>
+<span id="cb24-166"><a href="#cb24-166"></a></span>
+<span id="cb24-167"><a href="#cb24-167"></a></span>
+<span id="cb24-168"><a href="#cb24-168"></a><span class="fu"># Final Summary/Answer </span></span>
+<span id="cb24-169"><a href="#cb24-169"></a></span>
+<span id="cb24-170"><a href="#cb24-170"></a><span class="at">&gt; Overall, cappuccino affordability is fairly similar for most cafes across locations, but urban cafes show much greater variation and have the highest outliers.</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
