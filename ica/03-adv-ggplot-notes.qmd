@@ -185,18 +185,25 @@ If you'd like finer control of the width of these lines/rectangles, check out th
 
 ## Exercise 4
 
-Recreate the visual demarcations of the months by adding vertical lines separating the months.  Brainstorm how we might draw those vertical lines. What `geom` might we use?  What subset of the data might we use in that `geom` layer to draw lines only at the month divisions? 
+Recreate the visual demarcations of the months by adding vertical lines separating the months.  Brainstorm how we might draw those vertical lines. What `geom` might we use?  What subset of the data might we use in that `geom` layer to draw lines only at the month divisions?
 
-```{r }
-ggplot(weather) +
-  geom_linerange(aes(x = dateInYear, ymin = RecordLow, ymax = RecordHigh), color = '#ECEBE3') +
-  geom_linerange(aes(x = dateInYear, ymin = NormalLow, ymax = NormalHigh), color = "#C8B8BA")+ geom_linerange(aes(x = dateInYear, ymin = Low, ymax = High), color = "#A90248")+ 
-  geom_segment()
-    theme_classic()
-
-#geom_vline
+```{r}
+month_weather <- weather |>
+  group_by(Month)|>
+  summarize(dateline = min(dateInYear))
 ```
 
+
+
+
+```{r }
+weather |> 
+ggplot() +
+  geom_linerange(aes(x = dateInYear, ymin = RecordLow, ymax = RecordHigh), color = '#ECEBE3') +
+  geom_linerange(aes(x = dateInYear, ymin = NormalLow, ymax = NormalHigh), color = "#C8B8BA")+ geom_linerange(aes(x = dateInYear, ymin = Low, ymax = High), color = "#A90248") + 
+  geom_vline(data = month_weather, aes(xintercept = dateline),color = '#ECEBE3') +
+    theme_classic()
+```
 
 
 ## Exercise 5
@@ -213,6 +220,27 @@ Try to figuring out this new challenge using search engines and LLMs:
 - **Search Engines.** Use Google to search for possible solutions using the jargon that is most likely to return the most relevant results. Record search queries and your thought process in selecting which search results to look at first.
 
 - **LLMs.** Use [ChatGPT](https://chat.openai.com/) or [Gemini](https://gemini.google.com/) with prompts that will most efficiently get you the desired results. Record the chat prompts used and output given. Evaluate the output. Do you fully understand the code generated? How can you tell that the generated code is correct?
+
+
+```{r}
+month_weather <- weather|>
+  group_by(Month)|>
+  summarize(dateline = min(dateInYear))|>
+  mutate(month = month.abb[Month])
+
+
+weather |> 
+ggplot() +
+  geom_linerange(aes(x = dateInYear, ymin = RecordLow, ymax = RecordHigh), color = '#ECEBE3') +
+  geom_linerange(aes(x = dateInYear, ymin = NormalLow, ymax = NormalHigh), color = "#C8B8BA")+ geom_linerange(aes(x = dateInYear, ymin = Low, ymax = High), color = "#A90248") + 
+  geom_vline(data = month_weather, aes(xintercept = dateline),color = '#ECEBE3') +
+  scale_x_continuous(
+    breaks = month_weather$dateline,
+    labels = month_weather$month
+  )+
+    theme_classic()
+ 
+```
 
 
 ## Exercise 6 
