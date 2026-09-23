@@ -3,7 +3,6 @@ title: "6 Adv Data wrangling I"
 ---
 
 
-
 ## 🧩 Learning Goals
 
 By the end of this lesson, you should be able to:
@@ -77,6 +76,8 @@ Or you can create one based on available data using
 
 ```{r}
 library(tidyverse)
+library(lubridate)
+library(forcats)
 ```
 
 ```{r create_vec_examples}

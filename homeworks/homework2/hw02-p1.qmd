@@ -44,11 +44,11 @@ You will need to use reference pages and documentation to discover necessary too
 ## Setup
 
 ```{r}
-# Code for loading packages and reading in data
-install.packages(c("sf","elevatr","terra","stars","tidycensus","patchwork"))
-install.packages('devtools')
-devtools::install_github("ropensci/USAboundaries")
-install.packages("USAboundariesData", repos = "https://ropensci.r-universe.dev", type = "source")
+# # Code for loading packages and reading in data
+# install.packages(c("sf","elevatr","terra","stars","tidycensus","patchwork"))
+# install.packages('devtools')
+# devtools::install_github("ropensci/USAboundaries")
+# install.packages("USAboundariesData", repos = "https://ropensci.r-universe.dev", type = "source")
 ```
 ```{r}
 library(tidyverse)
@@ -126,10 +126,10 @@ List the resources you used to help with this assignment then write 3-5 sentence
 
 **Resources:**
 
--
--
--
+- ggplot2 reference page! (https://ggplot2.tidyverse.org/reference/)
+- NYTimes 2015 Temperature Visualization (https://www.nytimes.com/interactive/2016/02/19/us/2015-year-in-weather-temperature-precipitation.html)
+- ICA's
 
 **Reflection:**
-
+It is very cool to see how to add each part onto the layers you've already built. I was challenged by this activity because it used geoms I've never had experience with before, but it made the output very exciting. 
 
