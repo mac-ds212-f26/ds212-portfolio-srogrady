@@ -74,9 +74,17 @@ cafe <- cafe |>
 > Now we have the columan "Location" that says which location that cafe is in. 
 
 ```{r}
+#| fig-alt: "a boxplot showing the Cappuccino Prices Across Cafe Locations those being rural, suburban, urban"
 ggplot(cafe, aes(x = location, y = price_gbp)) +
   geom_boxplot() +
-  labs(title = "Cappuccino Prices Are Similar Across Cafe Locations",x = "Cafe Location",y = "Cappuccino Price (British pounds)",caption = "Source: TidyTuesday Cappuccino Index data, 2026"
+  labs(title = "Cappuccino Prices Are Similar Across Cafe Locations",x = "Cafe Location",y = "Cappuccino Price (British pounds)",caption = "Author: Shaylee O'Grady,Creation Date: 9/20/26, Source: TidyTuesday Cappuccino Index data"
+  )+
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size = 16),
+    axis.title = element_text(size = 13),
+    axis.text = element_text(size = 11),
+    plot.caption = element_text(size = 8)
   )
 ```
 > This visualization compares cappuccino prices across urban, suburban, and rural cafés. The median price is fairly similar across all three locations.(This price being a converted price of a small cappuccino from that cafe, converted to British pounds). All categories have a handful of outliers below that median price and above it, but Urban has the highest priced outliers. Overall, Urban and Suburban have slightly larger spreads; as in more varieties of prices charged; but they are all fairly similar.
