@@ -70,12 +70,6 @@ book:
       - tt/2025-07-15.qmd
       - tt/TTHW1_Cafe.qmd
 
-    - part: "Homeworks"
-      chapters:
-      - homeworks/comp440-hw0
-      - homeworks/homework2/hw02-p1.qmd
-      - homeworks/homework2/hw02-p2.qmd
-
     - part: "Pre-Class Learnings"
       chapters:
       - pcl/pcl.qmd
@@ -86,6 +80,8 @@ book:
       - ica/ica-sample2.qmd
       - ica/03-adv-ggplot-notes.qmd
       - ica/04-adv-maps-1-notes.qmd
+      - ica/06-wrangling-1-notes.qmd
+      - ica/08-missing-data.qmd
 
     - part: "Extras"
       chapters:

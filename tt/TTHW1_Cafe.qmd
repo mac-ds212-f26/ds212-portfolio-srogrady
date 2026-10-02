@@ -77,11 +77,13 @@ cafe <- cafe |>
 #| fig-alt: "a boxplot showing the Cappuccino Prices Across Cafe Locations those being rural, suburban, urban"
 ggplot(cafe, aes(x = location, y = price_gbp)) +
   geom_boxplot() +
-  labs(title = "Cappuccino Prices Are Similar Across Cafe Locations",x = "Cafe Location",y = "Cappuccino Price (British pounds)",caption = "Author: Shaylee O'Grady,Creation Date: 9/20/26, Source: TidyTuesday Cappuccino Index data"
+  labs(title = "Cappuccino Prices Across Cafe Communities",subtitle = "Ignoring outliers the majority of the data shows that Cappuccino prices are very similar across all cafe communities with very similar median prices.", x = " ", y =" ", caption = "Author: Shaylee O'Grady,Creation Date: 9/20/26, Source: TidyTuesday Cappuccino Index data"
   )+
+  scale_y_continuous(labels = scales::label_currency(prefix = "£"))+
   theme_minimal()+
   theme(
-    plot.title = element_text(size = 16),
+    plot.title = element_text(size = 15),
+    plot.subtitle = element_text(size = 8),
     axis.title = element_text(size = 13),
     axis.text = element_text(size = 11),
     plot.caption = element_text(size = 8)
